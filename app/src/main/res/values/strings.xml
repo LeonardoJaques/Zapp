@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Zapp</string>
+    <string name="input_email">Digite seu e-mail</string>
+    <string name="input_password">Digite sua senha</string>
+    <string name="button_login">Logar</string>
+    <string name="not_have_acount">não tem conta? Cadastre-se</string>
+    <string name="logo_zap">logo_zap</string>
+    <string name="input_name">Digite o seu nome</string>
+    <string name="button_register">Cadastrar</string>
+</resources>

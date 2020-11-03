@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "606360253067",
+    "firebase_url": "https://zapp-5bd92.firebaseio.com",
+    "project_id": "zapp-5bd92",
+    "storage_bucket": "zapp-5bd92.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606360253067:android:bfca845aa0765895065a8e",
+        "android_client_info": {
+          "package_name": "com.jaques.projetos.zapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "606360253067-ucmqg1dlbds3ie8j83ve8b6i8l9j1ri7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jaques.projetos.zapp",
+            "certificate_hash": "80befd54b5a66b9df14e7c4cfccb5e1677c7451b"
+          }
+        },
+        {
+          "client_id": "606360253067-6l2a4gq51ohb5tc1fn02grgpts4cp4d1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDya6CDVHHiv4mQWAurjzOe5ByROFYWSpk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "606360253067-6l2a4gq51ohb5tc1fn02grgpts4cp4d1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
