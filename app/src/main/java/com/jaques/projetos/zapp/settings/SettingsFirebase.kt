@@ -1,9 +1,6 @@
 package com.jaques.projetos.zapp.settings
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
@@ -16,7 +13,8 @@ class SettingsFirebase {
 
   companion object {
       private val auth: FirebaseAuth = FirebaseAuth.getInstance()
-      private val database: DatabaseReference = FirebaseDatabase.getInstance().reference
+      private val database: DatabaseReference = Firebase.database.reference
+
 
       //return firebaseAuth instance
       fun getFirebaseAuth() = auth

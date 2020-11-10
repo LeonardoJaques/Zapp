@@ -7,4 +7,14 @@
     <string name="logo_zap">logo_zap</string>
     <string name="input_name">Digite o seu nome</string>
     <string name="button_register">Cadastrar</string>
+    <string name="RegisterAdd">RegisterAdd</string>
+    <string name="search_menu">Pesquisar</string>
+    <string name="settings_menu">Configurações</string>
+    <string name="out_menu">Sair</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name_settings">Nome do usuário</string>
+    <string name="editVectorDescription_settings">edit</string>
+    <string name="warning_settings">Esse não é o seu nome usuário nem sua senha.
+        Esse nome ficará visível para seus contatos no Zapp</string>
 </resources>
