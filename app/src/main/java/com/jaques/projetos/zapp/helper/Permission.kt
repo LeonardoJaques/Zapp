@@ -1,7 +1,6 @@
 package com.jaques.projetos.zapp.helper
 
 import android.app.Activity
-import android.content.Context
 import android.content.pm.PackageManager
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
