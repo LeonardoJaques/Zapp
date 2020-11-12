@@ -11,29 +11,29 @@ import androidx.core.content.ContextCompat
 /** author Leonardo Jaques on 10/11/20 */
 
 
-class Permission(val activity: Activity, private val list: List<String>, private val code: Int) {
+class Permission(
+    val activity: Activity,
+    private val list: List<String>,
+    private val code: Int
+) {
 
     // Check permissions at runtime
-    fun checkPermissions() {
+   open fun checkPermissions() {
         if (isPermissionsGranted() != PackageManager.PERMISSION_GRANTED) {
             showAlert()
-        } else {
-            Toast.makeText(activity, "Permissions already granted.", Toast.LENGTH_LONG).show()
         }
     }
 
-
     // Check permissions status
     private fun isPermissionsGranted(): Int {
-        // PERMISSION_GRANTED : Constant Value: 0
-        // PERMISSION_DENIED : Constant Value: -1
+//         PERMISSION_GRANTED : Constant Value: 0
+//         PERMISSION_DENIED : Constant Value: -1
         var counter = 0;
         for (permission in list) {
             counter += ContextCompat.checkSelfPermission(activity, permission)
         }
         return counter
     }
-
 
     // Find the first denied permission
     private fun deniedPermission(): String {
@@ -45,30 +45,34 @@ class Permission(val activity: Activity, private val list: List<String>, private
         return ""
     }
 
-
     // Show alert dialog to request permissions
     private fun showAlert() {
         val builder = AlertDialog.Builder(activity)
-        builder.setTitle("Need permission(s)")
-        builder.setMessage("Some permissions are required to do the task.")
-        builder.setPositiveButton("OK") { dialog, which -> requestPermissions() }
-        builder.setNeutralButton("Cancel", null)
+        builder.setTitle("Permissões Nessesárias")
+        builder.setMessage("Algumas permissões são obrigatórias para continuar")
+        builder.setPositiveButton("Confirmar") { dialog, which -> requestPermissions() }
+        builder.setCancelable(false)
         val dialog = builder.create()
         dialog.show()
     }
-
 
     // Request the permissions at run time
     private fun requestPermissions() {
         val permission = deniedPermission()
         if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
             // Show an explanation asynchronously
-            Toast.makeText(activity, "Should show an explanation", Toast.LENGTH_LONG).show()
+            Toast.makeText(
+                activity,
+                "Infelizmente seu app será encerrado",
+                Toast.LENGTH_LONG
+            )
+                .show()
+            activity.finish()
         } else {
             ActivityCompat.requestPermissions(activity, list.toTypedArray(), code)
         }
-    }
 
+    }
 
     // Process permissions result
     fun processPermissionsResult(
@@ -84,6 +88,7 @@ class Permission(val activity: Activity, private val list: List<String>, private
         if (result == PackageManager.PERMISSION_GRANTED) return true
         return false
     }
+
 }
 
 
