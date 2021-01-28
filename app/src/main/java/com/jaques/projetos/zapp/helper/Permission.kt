@@ -36,13 +36,13 @@ class Permission(
     }
 
     // Find the first denied permission
-    private fun deniedPermission(): String {
+    private fun deniedPermission() {
         for (permission in list) {
             if (ContextCompat.checkSelfPermission(activity, permission)
                 == PackageManager.PERMISSION_DENIED
-            ) return permission
+            ) return checkPermissions()
         }
-        return ""
+//        return ""
     }
 
     // Show alert dialog to request permissions
@@ -59,7 +59,7 @@ class Permission(
     // Request the permissions at run time
     private fun requestPermissions() {
         val permission = deniedPermission()
-        if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permission)) {
+        if (ActivityCompat.shouldShowRequestPermissionRationale(activity, permission.toString())) {
             // Show an explanation asynchronously
             Toast.makeText(
                 activity,

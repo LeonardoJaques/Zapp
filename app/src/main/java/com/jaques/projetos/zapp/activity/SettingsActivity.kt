@@ -2,16 +2,17 @@ package com.jaques.projetos.zapp.activity
 
 import android.Manifest
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.jaques.projetos.zapp.R
 import com.jaques.projetos.zapp.helper.Permission
+import de.hdodenhof.circleimageview.CircleImageView
 
 
 class SettingsActivity : AppCompatActivity() {
@@ -19,6 +20,7 @@ class SettingsActivity : AppCompatActivity() {
     private val requestCode = 1
     private val SECTIONCAMERA = 100
     private val SECTIONGALLERY = 200
+
     private val permissionList = listOf(
 
         Manifest.permission.CAMERA,
@@ -26,6 +28,7 @@ class SettingsActivity : AppCompatActivity() {
 
         )
 
+    private lateinit var circleImageView_imagePerfil: CircleImageView
     private lateinit var managePermissions: Permission
     private lateinit var iButtonGallery: ImageButton
     private lateinit var iButtonCamera: ImageButton
@@ -37,6 +40,7 @@ class SettingsActivity : AppCompatActivity() {
 
         iButtonCamera = findViewById(R.id.imageButtonCamera)
         iButtonGallery = findViewById(R.id.imageButtonGallery)
+        circleImageView_imagePerfil = findViewById(R.id.circleImageView_image)
 
         managePermissions = Permission(this, permissionList, requestCode)
 
@@ -54,7 +58,42 @@ class SettingsActivity : AppCompatActivity() {
                 startActivityForResult(mediaIntent, SECTIONCAMERA)
             }
         }
+
+        iButtonGallery.setOnClickListener {
+            val mediaIntent = Intent(
+                Intent.ACTION_PICK,
+                MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+            )
+            if (mediaIntent.resolveActivity(packageManager) != null) {
+                startActivityForResult(mediaIntent, SECTIONGALLERY)
+            }
+        }
+
     }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        try {
+                when (requestCode) {
+
+                    //get the image with camera
+                    SECTIONCAMERA -> {
+                        val imageBitmap = data?.extras?.get("data") as Bitmap
+                        circleImageView_imagePerfil.setImageBitmap(imageBitmap)
+
+                    }
+                    //get the image in gallery
+                    SECTIONGALLERY -> {
+                        val imageUri = data?.data
+                        circleImageView_imagePerfil.setImageURI(imageUri) }
+                }
+
+        } catch (e: Exception){
+                 e.printStackTrace()
+        }
+    }
+
 
     private fun checkVersion() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
@@ -85,5 +124,6 @@ class SettingsActivity : AppCompatActivity() {
 
     }
 
-}
+
+    }
 
