@@ -105,7 +105,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onStart() {
         val currentUser = SettingsFirebase.getFirebaseAuth().currentUser
-        Log.i("Rapadura", "rapaduraUser:${currentUser} ")
+
         if (currentUser != null) {
             updateUI(user)
         }

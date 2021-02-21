@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.*
 import com.jaques.projetos.zapp.R
 import com.jaques.projetos.zapp.helper.Base64Custom
+import com.jaques.projetos.zapp.helper.UserFirebase
 import com.jaques.projetos.zapp.model.User
 import com.jaques.projetos.zapp.settings.SettingsFirebase
 
@@ -96,6 +97,7 @@ class RegisterActivity : AppCompatActivity() {
                         baseContext, exception,
                         Toast.LENGTH_SHORT
                     ).show()
+                    UserFirebase.updateUserName(user.name)
                     updateUI(null)
                     finish()
                 }
